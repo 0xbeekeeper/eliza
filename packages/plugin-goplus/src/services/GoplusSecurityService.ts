@@ -81,7 +81,7 @@ export class GoplusSecurityService extends Service implements IGoplusSecuritySer
             elizaLogger.log("checkResult text", checkResult);
             const checkResponse = await generateText({
                 runtime: this.runtime,
-                context: responsePrompt(JSON.stringify(checkResult)),
+                context: responsePrompt(JSON.stringify(checkResult), text),
                 modelClass: ModelClass.SMALL,
             });
             elizaLogger.log("checkResponse text", checkResponse);

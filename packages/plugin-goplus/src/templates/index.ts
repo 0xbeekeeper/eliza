@@ -193,19 +193,17 @@ important: do not response anything except json`
 
 
 
-
-export const responsePrompt = (req: string, text:string) => `You are a security action detector for blockchain interactions. Your task is to analyze the security API's response from GoPlus and summary the API result.
-
-API result to analyze:"""
-${req}
+export const responsePrompt = (apiresult: string, text:string) => `You are a security action detector for blockchain interactions. Your task is to analyze the security API’s response from GoPlus and summary the API result.
+API to analyze:“”"
+${apiresult}
+“”"
+user’s request:“”
 ${text}
-"""
-
-You are tasked with performing a security assessment for various blockchain-related actions. Based on the provided action type and the API response, you need to:
-
-Identify the Action: Analyze the provided API result to determine which action it corresponds to.
-Extract the Relevant Information: Based on the action and its parameters, extract the relevant details from the API response.
-Formulate a Response: Combine the action type, extracted information, and an analysis of the results to provide the user with the most comprehensive and relevant answer. Ensure that the response is clear, concise, and tailored to the user's needs based on the security context.
-
-Just reply with the conclusion, no need to show the thought process.
-You don't need to reply to the safety part of the message, you just need to point out the risk.`
+“”
+Instructions:
+1. **Identify the Action**: Analyze the API response to determine which specific action it relates to.
+2. **Extract Relevant Information**: From the action and its parameters, extract and highlight the key details.
+3. **Formulate a Clear Response**: Combine the action type, extracted information, and an analysis of the results. Provide a clear, concise response based on the security context. Focus on delivering the most relevant answer without unnecessary detail.
+- Only reply with your conclusion.
+- Do not discuss the safety aspects of the action; just focus on identifying and pointing out any risks.
+- Tailor your response to the user’s request, focusing on their specific query.`
